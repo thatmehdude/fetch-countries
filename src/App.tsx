@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { type country } from "./utils";
 import Header from "./components/Header";
+import Modify from "./components/Modify";
+
+import CardContainer from "./components/CardContainer";
 
 function App() {
   const [countries, setCountries] = useState<country[]>([]);
@@ -36,28 +39,8 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="search-div">
-        <input type="text" onChange={(e) => handleSearch(e.target.value)} />
-        <select
-          name="continents"
-          id="continents"
-          onChange={(e) => handleFilter(e.target.value)}
-        >
-          <option value="" selected disabled>
-            Filter by region
-          </option>
-          <option value="Africa">Africa</option>
-          <option value="Asia">Asia</option>
-          <option value="Americas">Americas</option>
-          <option value="Europe">Europe</option>
-          <option value="Oceania">Oceania</option>
-        </select>
-      </div>
-      <ul>
-        {activeCountries.map((country, index) => (
-          <li key={index}>{country.name}</li>
-        ))}
-      </ul>
+      <Modify handleSearch={handleSearch} handleFilter={handleFilter}/>
+      <CardContainer activeCountries={activeCountries}/>
     </div>
   );
 }
