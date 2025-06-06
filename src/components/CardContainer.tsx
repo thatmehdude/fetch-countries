@@ -14,7 +14,7 @@ const CardContainer = ({activeCountries}: CardProps) => {
                 name={country.name}
                 flagUrl={country.flags.svg}
                 region={country.region}
-                capital={country.region}
+                capital={country.capital}
                 population={country.population}
                 />
             ))}
